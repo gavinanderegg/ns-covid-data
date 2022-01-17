@@ -23,8 +23,19 @@ svg#mainData {
     height: 100%
 }
 
- .line {
+.line {
     fill: none;
-    stroke: steelblue;
     stroke-width: 1.5px;
+}
+
+.casesLine {
+    stroke: #888;
+}
+
+.hospsLine {
+    stroke: #AC0;
+}
+
+.deathsLine {
+    stroke: #C40;
 }

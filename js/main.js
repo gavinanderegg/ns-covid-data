@@ -22,27 +22,44 @@ var deathsLine = d3.line()
 var chart = svg.append('g')
     .attr('class', 'lines');
 
+var csvData;
+
 d3.csv('./data/data.csv', accessor).then((data) => {
-    x.domain(d3.extent(data, function (d) { return d.Date; }));
-    y.domain([0, d3.max(data, function (d) { return d.Cases; })]);
+    csvData = data;
+    draw();
+}).catch(function (error) {
+    console.log(error);
+});
+
+function draw() {
+    x = d3.scaleTime().range([0, svg.node().clientWidth]);
+    y = d3.scaleLinear().range([svg.node().clientHeight, 0]);
+
+    x.domain(d3.extent(csvData, function (d) { return d.Date; }));
+    y.domain([0, d3.max(csvData, function (d) { return d.Cases; })]);
+
+    svg.selectAll('*').remove();
+
+    var chart = svg.append('g')
+        .attr('class', 'lines');
 
     chart.append('path')
-        .datum(data)
+        .datum(csvData)
         .attr('class', 'line casesLine')
         .attr('d', casesLine);
 
     chart.append('path')
-        .datum(data)
+        .datum(csvData)
         .attr('class', 'line hospsLine')
         .attr('d', hospsLine);
 
     chart.append('path')
-        .datum(data)
+        .datum(csvData)
         .attr('class', 'line deathsLine')
         .attr('d', deathsLine);
-}).catch(function (error) {
-    console.log(error);
-});
+}
+
+window.addEventListener('resize', draw);
 
 function accessor(d) {
     d.Date = parseDate(d.Date);
