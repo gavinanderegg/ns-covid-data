@@ -4,8 +4,11 @@ var svg = d3.select('svg#mainData');
 
 var parseDate = d3.timeParse('%Y-%m-%d');
 
-var x = d3.scaleTime().range([0, svg.node().clientWidth]);
-var y = d3.scaleLinear().range([svg.node().clientHeight, 0]);
+var margin = { top: 0, right: 0, bottom: 50, left: 70 };
+var width = svg.node().clientWidth - margin.left - margin.right;
+var height = svg.node().clientHeight - margin.top - margin.bottom;
+var x = d3.scaleTime().range([0, width]);
+var y = d3.scaleLinear().range([height, 0]);
 
 var casesLine = d3.line()
     .x(function (d) { return x(d.Date); })
@@ -32,8 +35,10 @@ d3.csv('./data/data.csv', accessor).then((data) => {
 });
 
 function draw() {
-    x = d3.scaleTime().range([0, svg.node().clientWidth]);
-    y = d3.scaleLinear().range([svg.node().clientHeight, 0]);
+    width = svg.node().clientWidth - margin.left - margin.right;
+    height = svg.node().clientHeight - margin.top - margin.bottom;
+    x = d3.scaleTime().range([0, width]);
+    y = d3.scaleLinear().range([height, 0]);
 
     x.domain(d3.extent(csvData, function (d) { return d.Date; }));
     y.domain([0, d3.max(csvData, function (d) { return d.Cases; })]);
@@ -41,7 +46,17 @@ function draw() {
     svg.selectAll('*').remove();
 
     var chart = svg.append('g')
-        .attr('class', 'lines');
+        .attr('class', 'lines')
+        .attr("transform",
+            "translate(" + margin.left + "," + margin.top + ")");
+
+    svg.append('g')
+        .attr('transform', 'translate(' + margin.left + ', ' + height + ')')
+        .call(d3.axisBottom(x));
+
+    svg.append('g')
+        .attr('transform', 'translate(' + margin.left + ',0)')
+        .call(d3.axisLeft(y));
 
     chart.append('path')
         .datum(csvData)

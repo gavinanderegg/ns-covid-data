@@ -4,21 +4,20 @@ html, body {
     overflow: hidden;
     width: 100%;
     height: 100%;
+    background-color: #FFE;
+}
+
+* {
+    box-sizing: border-box;
 }
 
 #container {
-    display: inline-block;
-    position: absolute;
     width: 100%;
-    padding-bottom: 100%; /* aspect ratio */
-    vertical-align: top;
-    overflow: hidden;
-    top: 0;
-    left: 0;
+    height: 100%;
+    padding: 24px;
 }
 
 svg#mainData {
-    background-color: #FFE;
     width: 100%;
     height: 100%
 }
