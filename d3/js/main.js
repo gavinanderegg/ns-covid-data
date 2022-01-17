@@ -25,7 +25,7 @@ var chart = svg.append('g')
 
 var csvData;
 
-d3.csv('./data/data.csv', accessor).then((data) => {
+d3.csv('../data/data.csv', accessor).then((data) => {
     csvData = data;
     draw();
 }).catch(function (error) {
