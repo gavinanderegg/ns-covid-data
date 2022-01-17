@@ -4,7 +4,7 @@ var svg = d3.select('svg#mainData');
 
 var parseDate = d3.timeParse('%Y-%m-%d');
 
-var margin = { top: 0, right: 0, bottom: 50, left: 70 };
+var margin = { top: 0, right: 40, bottom: 50, left: 70 };
 var width = svg.node().clientWidth - margin.left - margin.right;
 var height = svg.node().clientHeight - margin.top - margin.bottom;
 var x = d3.scaleTime().range([0, width]);
