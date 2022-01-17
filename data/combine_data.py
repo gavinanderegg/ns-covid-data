@@ -7,5 +7,3 @@ data = pd.merge(cases, hosp)
 
 data.to_excel('data.xlsx', 'Combined COVID Data', index=False)
 data.to_csv('data.csv', index=False)
-
-
