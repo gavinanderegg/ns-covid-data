@@ -13,7 +13,9 @@ d3.csv('./data/data.csv', accessor).then((data) => {
 function accessor(d) {
     d.Date = parseDate(d.Date);
     d.Cases = +d['Daily new cases'];
+    delete d['Daily new cases'];
     d.Deaths = +d['Deaths'];
     d.Hosp = +d['Total in hospital (both ICU and non-ICU)'];
+    delete d['Total in hospital (both ICU and non-ICU)'];
     return d;
 }
