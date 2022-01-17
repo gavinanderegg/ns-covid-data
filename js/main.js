@@ -1,5 +1,3 @@
-// based on: https://bl.ocks.org/EfratVil/92f894ac0ba265192411e73f633a3e2f
-
 var svg = d3.select('svg#mainData');
 
 var parseDate = d3.timeParse('%Y-%m-%d');
@@ -45,10 +43,36 @@ function draw() {
 
     svg.selectAll('*').remove();
 
+    var labels = [
+        { 'name': 'Cases', 'color': '#888'},
+        { 'name': 'Hospitalizations', 'color': '#AC0' },
+        { 'name': 'Deaths', 'color': '#C40' }
+    ];
+
+    svg.selectAll('dots')
+        .data(labels)
+        .enter()
+        .append('circle')
+        .attr('cx', 100)
+        .attr('cy', function (d, i) { return 25 + i * 25 })
+        .style('fill', function (d) { return d.color })
+        .attr('r', 7);
+
+    svg.selectAll('labels')
+        .data(labels)
+        .enter()
+        .append('text')
+        .attr('x', 120)
+        .attr('y', function (d, i) { return 25 + i * 25 })
+        .style('fill', function (d) { return d.color })
+        .text(function (d) { return d.name })
+        .attr('text-anchor', 'left')
+        .style('alignment-baseline', 'middle');
+
     var chart = svg.append('g')
         .attr('class', 'lines')
-        .attr("transform",
-            "translate(" + margin.left + "," + margin.top + ")");
+        .attr('transform',
+            'translate(' + margin.left + ',' + margin.top + ')');
 
     svg.append('g')
         .attr('transform', 'translate(' + margin.left + ', ' + height + ')')
