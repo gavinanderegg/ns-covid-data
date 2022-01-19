@@ -1,0 +1,45 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    background-color: #FFE;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+#container {
+    width: 100%;
+    height: 100%;
+    padding: 24px;
+}
+
+svg#mainData {
+    width: 100%;
+    height: 100%;
+}
+
+svg text {
+    font-family: Helvetica, sans-serif;
+    font-size: 14px;
+}
+
+.line {
+    fill: none;
+    stroke-width: 1.5px;
+}
+
+.casesLine {
+    stroke: #888;
+}
+
+.hospsLine {
+    stroke: #AC0;
+}
+
+.deathsLine {
+    stroke: #C40;
+}
