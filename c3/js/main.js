@@ -10,21 +10,45 @@ function accessor(d) {
     return d;
 }
 
+var dates = ['x'];
+var cases = ['Cases'];
+var hosps = ['Hospitalizations'];
+
 d3.csv('../data/data.csv', accessor).then((data) => {
-    csvData = data;
-    console.log(data);
+    data.map(d => {
+        dates.push(d.Date);
+        cases.push(d.Cases);
+        hosps.push(d.Hosps);
+    });
+
+    var chart = c3.generate({
+        bindto: '#mainData',
+        data: {
+            x: 'x',
+            columns: [
+                dates,
+                cases,
+                hosps
+            ]
+        },
+        axis: {
+            x: {
+                type: 'timeseries',
+                tick: {
+                    format: '%Y-%m-%d'
+                }
+            }
+        },
+        subchart: {
+            show: true
+        },
+        tooltip: {
+            show: true
+        }
+    });
 }).catch(function (error) {
     console.log(error);
 });
 
 
-var chart = c3.generate({
-    bindto: '#mainData',
-    data: {
-        columns: [
-            ['data1', 30, 200, 100, 400, 150, 250],
-            ['data2', 50, 20, 10, 40, 15, 25]
-        ]
-    }
-});
 
