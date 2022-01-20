@@ -5,6 +5,7 @@ html, body {
     width: 100%;
     height: 100%;
     background-color: #FFE;
+    font-family: Helvetica, sans-serif;
 }
 
 * {
@@ -12,12 +13,13 @@ html, body {
 }
 
 #container {
+    position: relative;
     width: 100%;
     height: 100%;
-    padding: 24px;;
 }
 
 svg#mainData {
+    position: relative;
     width: 100%;
     height: 100%;
 }

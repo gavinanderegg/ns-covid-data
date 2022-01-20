@@ -22,7 +22,7 @@ d3.csv('../data/data.csv', accessor).then((data) => {
     });
 
     var chart = c3.generate({
-        bindto: '#mainData',
+        bindto: '#container',
         data: {
             x: 'x',
             columns: [
