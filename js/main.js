@@ -14,7 +14,7 @@ var dates = ['x'];
 var cases = ['Cases'];
 var hosps = ['Hospitalizations'];
 
-d3.csv('data/data.csv', accessor).then((data) => {
+d3.csv('../data/data.csv', accessor).then((data) => {
     data.map(d => {
         dates.push(d.Date);
         cases.push(d.Cases);
