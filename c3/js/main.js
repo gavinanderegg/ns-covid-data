@@ -44,6 +44,9 @@ d3.csv('../data/data.csv', accessor).then((data) => {
         },
         tooltip: {
             show: true
+        },
+        padding: {
+            right: 20
         }
     });
 }).catch(function (error) {
