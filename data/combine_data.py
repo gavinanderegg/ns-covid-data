@@ -5,5 +5,6 @@ hosp = pd.read_csv('./csv/hospitalizations.csv', parse_dates=[0])
 
 data = pd.merge(cases, hosp)
 
-data.to_excel('data.xlsx', 'Combined COVID Data', index=False)
+# I didn't end up using Excel data
+# data.to_excel('data.xlsx', 'Combined COVID Data', index=False)
 data.to_csv('data.csv', index=False)
