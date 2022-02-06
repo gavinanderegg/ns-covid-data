@@ -12,13 +12,15 @@ function accessor(d) {
 
 var dates = ['x'];
 var cases = ['Cases'];
-var hosps = ['Hospitalizations'];
+var hosps = ['Hospitalizations for COVID symptoms'];
+var all = ['People in hospital with COVID'];
 
 d3.csv('./data/data.csv', accessor).then((data) => {
     data.map(d => {
         dates.push(d.Date);
         cases.push(d.Cases);
         hosps.push(d.Hosps);
+        all.push(d.All);
     });
 
     var chart = c3.generate({
@@ -28,7 +30,8 @@ d3.csv('./data/data.csv', accessor).then((data) => {
             columns: [
                 dates,
                 cases,
-                hosps
+                hosps,
+                all
             ]
         },
         axis: {
