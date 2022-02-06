@@ -56,6 +56,10 @@ d3.csv('./data/data.csv', accessor).then((data) => {
             right: 20
         }
     });
+
+    const zoom = chart.zoom();
+    chart.zoom(['2021-11-30', zoom[1]]);
+
 }).catch(function (error) {
     console.log(error);
 });
