@@ -12,8 +12,8 @@ function accessor(d) {
 
 var dates = ['x'];
 var cases = ['Cases'];
-var hosps = ['Hospitalizations for COVID symptoms'];
-var all = ['People in hospital with COVID'];
+var hosps = ['Hospitalized with COVID symptoms'];
+var all = ['Total in hospitals with COVID'];
 
 d3.csv('./data/data.csv', accessor).then((data) => {
     data.map(d => {
