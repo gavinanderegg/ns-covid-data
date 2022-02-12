@@ -57,8 +57,10 @@ d3.csv('./data/data.csv', accessor).then((data) => {
         }
     });
 
-    const zoom = chart.zoom();
-    chart.zoom(['2021-11-30', zoom[1]]);
+    var d = new Date();
+    const today = d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + (d.getDate() + 1);
+
+    chart.zoom(['2021-11-30', today]);
 
 }).catch(function (error) {
     console.log(error);
